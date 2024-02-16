@@ -15,9 +15,6 @@ public class Input extends Thread {
 
     @Override
     public void run() {
-        System.out.println(System.getProperty("os.name"));
-
-
         if(System.getProperty("os.name").contains("Linux")) {
             Ruta = RutaLinux;
         } else if(System.getProperty("os.name").contains("Windows")) {
@@ -39,15 +36,7 @@ public class Input extends Thread {
 
         salida.setConexion(false);
         
-        //Esto se puede borrar.
-        while(true){
-            try {
-                Thread.sleep(2000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            System.out.println("-Input en Standby");
-        }
+        
 
     }
 

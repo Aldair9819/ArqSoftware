@@ -30,19 +30,7 @@ public class CircularShift extends Thread {
         
         salida.setConexion(false);
 
-        //Lo de abajo se borra. Solo es para checar que funcionan
-
-        while(salida.isInformacion()){
-            System.out.println(salida.getInformacion());
-        }
-        while(true){
-            try {
-                Thread.sleep(2000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            System.out.println("CircularShift en Standby");
-        }
+       
 
     }
 
