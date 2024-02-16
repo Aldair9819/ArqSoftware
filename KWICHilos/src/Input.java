@@ -1,35 +1,43 @@
-import java.util.ArrayList;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 
 public class Input extends Thread {
-    private ArrayList<String> lineas = new ArrayList<String>();
-    private String nombre = "Base";
+    String Ruta = "KWICHilos/src/texto.txt";
+    private Tube salida;
+
    
+    public Input(Tube salida) {
+        this.salida = salida;
+    }
+
     @Override
     public void run() {
-        /* 
-        for(int i=0;i<200;i++){
-            lineas.add("Linea"+i);
-            System.out.println("Funcion entrada: Linea"+i);
+
+        try(BufferedReader bf = new BufferedReader(new FileReader(Ruta))){
+            String s;
+            while((s = bf.readLine())!=null) {
+                salida.addInformacion(s);
+            }
         }
-        */
+        catch(IOException ex) {
+            ex.printStackTrace();
+        }
+
+        salida.setConexion(false);
+        
+        //Esto se puede borrar.
         while(true){
             try {
                 Thread.sleep(2000);
             } catch (InterruptedException e) {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
             }
-            System.out.println("Funcion entrada: "+nombre);
+            System.out.println("-Input en Standby");
         }
 
     }
 
-    public void setLineas(ArrayList<String> lineas) {
-        this.lineas = lineas;
-    }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
 
 }

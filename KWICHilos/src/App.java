@@ -1,11 +1,15 @@
 public class App {
     public static void main(String[] args) throws Exception {
         System.out.println("Hello, World!");
-        Input cs = new Input();
-        Input cs2 = new Input();
-        cs.setNombre("Prueba01");
-        cs2.setNombre("Prueba02");
+
+        Tube InP_CS = new Tube();
+        Tube CS_Sort = new Tube();
+
+        Input input = new Input(InP_CS);
+        CircularShift cs = 
+        new CircularShift(InP_CS, CS_Sort);
+
         cs.start();
-        cs2.start();
+        input.start();
     }
 }
