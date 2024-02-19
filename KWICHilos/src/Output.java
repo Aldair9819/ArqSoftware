@@ -9,7 +9,7 @@ public class Output {
     String RutaWindows = "src\\textoSalida.txt";
     private String ruta ;
 
-    public Output(ArrayList lista){
+    public Output(ArrayList<String> lista){
         this.salidaArreglo= lista;
         if(System.getProperty("os.name").contains("Linux")) {
             ruta = RutaLinux;
