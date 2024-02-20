@@ -5,10 +5,11 @@ public class App {
 
         Tube InP_CS = new Tube();
         Tube CS_Sort = new Tube();
+        Tube Sort_Out = new Tube();
 
         Input input = new Input(InP_CS);
         CircularShift cs = new CircularShift(InP_CS, CS_Sort);
-        Sort sortObj = new Sort(CS_Sort);
+        Sort sortObj = new Sort(CS_Sort, Sort_Out);
         
         cs.start();
         input.start();
@@ -16,7 +17,7 @@ public class App {
 
         try {
             sortObj.join(); // Espera a que el hilo termine
-            Output out = new Output(sortObj.getSalidaA());
+            Output.salidaEnArchivo(Sort_Out);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

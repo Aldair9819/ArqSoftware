@@ -1,11 +1,12 @@
 import java.util.ArrayList;
 
 public class Sort extends Thread {
-    private Tube entrada; 
-    private ArrayList<String> salidaA = new ArrayList<>();
+    private Tube entrada, salida; 
+    private ArrayList<String> salidaA = new ArrayList<String>();
     
-    public Sort(Tube entrada) {
+    public Sort(Tube entrada, Tube salida) {
         this.entrada = entrada;
+        this.salida = salida;
     }
     public void run() {
         while (entrada.isConexion() || entrada.isInformacion()) {
@@ -32,11 +33,13 @@ public class Sort extends Thread {
                 } while (swapped);
             }
         }
+        while(!salidaA.isEmpty()){
+            salida.addInformacion(salidaA.get(0));
+            salidaA.remove(0);
+        }
     }
 
-    public ArrayList<String> getSalidaA(){
-        return salidaA;
-    }
+
 
 
 }

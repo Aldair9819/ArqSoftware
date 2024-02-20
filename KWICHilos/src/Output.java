@@ -1,31 +1,25 @@
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
 
 public class Output {
-    private ArrayList<String> salidaArreglo;
-    String RutaLinux = "KWICHilos/src/textoSalida.txt";
-    String RutaWindows = "src\\textoSalida.txt";
-    private String ruta ;
+    private static final String RutaLinux = "KWICHilos/src/textoSalida.txt";
+    private static final String RutaWindows = "src\\textoSalida.txt";
+    private static String ruta;
 
-    public Output(ArrayList<String> lista){
-        this.salidaArreglo= lista;
-        if(System.getProperty("os.name").contains("Linux")) {
-            ruta = RutaLinux;
-        } else if(System.getProperty("os.name").contains("Windows")) {
+    public static void salidaEnArchivo(Tube entrada){
+        
+        if(System.getProperty("os.name").contains("Windows")) {
             ruta = RutaWindows;
+        }else{
+            ruta = RutaLinux;
         }
 
-        salidaEnArchivo();
-    }
-
-    private void salidaEnArchivo(){
          try {
             BufferedWriter writer = new BufferedWriter(new FileWriter(ruta));
-            for (String linea : salidaArreglo) {
-                writer.write(linea);
-                writer.newLine(); // Agrega una nueva línea después de cada elemento
+            while(entrada.isInformacion()){
+                writer.write(entrada.getInformacion());
+                writer.newLine();
             }
             writer.close();
             System.out.println("El ArrayList se ha escrito correctamente en el archivo.");

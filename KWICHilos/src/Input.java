@@ -3,9 +3,9 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class Input extends Thread {
-    String RutaLinux = "KWICHilos/src/texto.txt";
-    String RutaWindows = "src\\texto.txt";
-    String Ruta;
+    private final String RutaLinux = "KWICHilos/src/texto.txt";
+    private final String RutaWindows = "src\\texto.txt";
+    private String Ruta;
     private Tube salida;
 
    
@@ -15,12 +15,10 @@ public class Input extends Thread {
 
     @Override
     public void run() {
-        if(System.getProperty("os.name").contains("Linux")) {
-            Ruta = RutaLinux;
-        } else if(System.getProperty("os.name").contains("Windows")) {
+        if(System.getProperty("os.name").contains("Windows")) {
             Ruta = RutaWindows;
         } else {
-            System.out.println("Otro");
+            Ruta = RutaLinux;
         }
 
 

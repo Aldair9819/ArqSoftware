@@ -25,5 +25,7 @@ public class Tube {
     public synchronized boolean isInformacion(){
         return !informacion.isEmpty();
     }
+
+
     
 }
