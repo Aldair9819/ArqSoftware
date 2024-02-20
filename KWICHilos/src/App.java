@@ -1,6 +1,15 @@
+import java.util.ArrayList;
+
 public class App {
     public static void main(String[] args) throws Exception {
+        /* 
         System.out.println("Inicia el programa");
+        String ruta = ObtenerArchivosTXT.rutaEntrada();
+        System.out.println("Tu ruta es:"+ruta);
+        System.out.println("Ruta de salida: "+ruta.substring(0, ruta.length()-4)+"Salida.txt");
+        */
+
+        /* 
         long startTime = System.nanoTime();
 
         Tube InP_CS = new Tube();
@@ -24,6 +33,7 @@ public class App {
         long endTime = System.nanoTime();
         long duration = (endTime - startTime);
         System.out.println("El tiempo de ejecución es: " + duration + " nanosegundos");
+        */
     }
     }
 
