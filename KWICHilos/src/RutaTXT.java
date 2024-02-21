@@ -1,28 +1,13 @@
 import java.io.File;
 import java.util.ArrayList;
 
-public class ObtenerArchivosTXT {
+public class RutaTXT {
 
-    private static String Ruta;
+    private static String Ruta = "";
     private static String RutaLinux = "KWICHilos/src/";
     private static String RutaWindows = "src\\";
-    /* 
-    public static void main(String[] args) {
-        // Ruta de la carpeta que deseas verificar
-        String rutaCarpeta = "src";
 
-        // Obtener nombres de archivos con extensión .txt
-        List<String> archivosTxt = obtenerArchivosTXT(rutaCarpeta);
-
-        // Imprimir los nombres de archivos obtenidos
-        System.out.println("Archivos con extensión .txt:");
-        for (String archivo : archivosTxt) {
-            System.out.println(archivo);
-        }
-    }
-    */
-
-    public static ArrayList<String> obtenerArchivosTXT(String rutaCarpeta) {
+    private static ArrayList<String> obtenerArchivosTXT(String rutaCarpeta) {
         String nombreRemover = "salida";
 
         File carpeta = new File(rutaCarpeta);
@@ -30,7 +15,7 @@ public class ObtenerArchivosTXT {
         // Verificar si la ruta es un directorio
         if (!carpeta.isDirectory()) {
             System.out.println("La ruta no es un directorio.");
-            return new ArrayList<>(); // Devolver una ArrayList vacía si no es un directorio
+            return new ArrayList<String>(); // Devolver una ArrayList vacía si no es un directorio
         }
 
         // Obtener la lista de archivos en la carpeta
@@ -52,21 +37,35 @@ public class ObtenerArchivosTXT {
         return archivosTxtList;
     }
 
-    public static ArrayList<String> nombresEntrada(){
-        ArrayList<String> nombreArchivosTexto = obtenerArchivosTXT("src");
-        nombreArchivosTexto.removeIf(nombre -> nombre.toLowerCase().contains("salida"));
-        return nombreArchivosTexto;
+   
+    public static String rutaSalidaNumero(String rutaDeEntrada){
+        String nombre = rutaDeEntrada.substring(0, rutaDeEntrada.length()-4);
+        return nombre+"salida.txt";
     }
 
-    public static ArrayList<String> nombresSalida(){
-        ArrayList<String> nombreArchivosTexto = obtenerArchivosTXT("src");
-        nombreArchivosTexto.removeIf(nombre -> !nombre.toLowerCase().contains("salida"));
-        return nombreArchivosTexto;
+    public static String rutaSalidaUno(String rutaDeEntrada){
+        String nombre = rutaDeEntrada.substring(0, rutaDeEntrada.length()-5);
+        return nombre+"salida.txt";
+
     }
 
     public static String rutaEntrada(){
-        ArrayList<String> nombreArchivosTexto = obtenerArchivosTXT("src");
+
+        ArrayList<String> nombreArchivosTexto = new ArrayList<String>();
+
+        if(System.getProperty("os.name").contains("Windows")) {
+            nombreArchivosTexto = obtenerArchivosTXT("src");
+        }else{
+            nombreArchivosTexto = obtenerArchivosTXT("KWICHilos/src");
+        }
+        
         int opcion = 0;
+        if(nombreArchivosTexto.size()==0){
+            System.out.println("No hay archivos de texto en la carpeta");
+            System.out.println("Saliendo del programa");
+            System.exit(0);
+        }
+
         while(true){
             System.out.println("Selecciona el archivo de entrada:");
             for(int i=0;i<nombreArchivosTexto.size();i++){

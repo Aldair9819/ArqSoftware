@@ -1,13 +1,30 @@
-import java.util.ArrayList;
+
 
 public class App {
     public static void main(String[] args) throws Exception {
-        /* 
+        
         System.out.println("Inicia el programa");
-        String ruta = ObtenerArchivosTXT.rutaEntrada();
-        System.out.println("Tu ruta es:"+ruta);
-        System.out.println("Ruta de salida: "+ruta.substring(0, ruta.length()-4)+"Salida.txt");
-        */
+        String rutaEntrada = RutaTXT.rutaEntrada();
+        String rutaSalida = "";
+        //Usa esta linea para la ruta de salida de 1 solo archivo
+        //rutaSalida = RutaTXT.rutaSalidaUno(rutaEntrada);
+
+        //Usa esta linea para la ruta de salida de varios archivos
+        //rutaSalida = RutaTXT.rutaSalidaNumero(rutaEntrada);
+
+        //Recuerda escoger una de ellas y borrar la otra
+        //Tanto en la clase como en el main
+
+        System.out.println("Tu ruta es:"+rutaEntrada);
+        System.out.println("Ruta de salida: "+rutaSalida);
+        //Aqui acaba la parte de las rutas.
+
+
+
+
+        //Esto de acá es el código que se ejecuta. Puedes
+        //solo añadir lo de arriba al codigo en tu compu 
+        //y correrlo sin necesidad de esto de abajo
 
         /* 
         long startTime = System.nanoTime();
