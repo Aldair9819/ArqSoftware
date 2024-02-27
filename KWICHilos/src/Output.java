@@ -3,17 +3,10 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class Output {
-    private static final String RutaLinux = "KWICHilos/src/textoSalida.txt";
-    private static final String RutaWindows = "src\\textoSalida.txt";
     private static String ruta;
 
-    public static void salidaEnArchivo(Tube entrada){
-        
-        if(System.getProperty("os.name").contains("Windows")) {
-            ruta = RutaWindows;
-        }else{
-            ruta = RutaLinux;
-        }
+    public static void salidaEnArchivo(Tube entrada, String rutaSalida){
+        ruta = rutaSalida;
 
          try {
             BufferedWriter writer = new BufferedWriter(new FileWriter(ruta));
