@@ -15,6 +15,7 @@ public class Input extends Thread {
         try(BufferedReader bf = new BufferedReader(new FileReader(Ruta))){
             String s;
             while((s = bf.readLine())!=null) {
+                if(!s.replace(" ", "").equals(""))
                 salida.addInformacion(s);
             }
         }
