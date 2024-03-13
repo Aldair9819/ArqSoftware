@@ -9,16 +9,16 @@ public class App {
         
         ArrayList<String> word = Input.obtenerPalabras(rutaPalabra);
 
-        Tube Input_CS = new Tube();
-        Tube CS_Sort = new Tube();
+        Tube Input_WIP = new Tube();
+        Tube WIP_Sort = new Tube();
         Tube Sort_Out = new Tube();
 
-        Input input = new Input(rutaPDF,Input_CS);
-        WordInPage cs = new WordInPage(Input_CS, CS_Sort,word);
-        Sort sortObj = new Sort(CS_Sort, Sort_Out, word);
+        Input input = new Input(rutaPDF,Input_WIP);
+        WordInPage wip = new WordInPage(Input_WIP, WIP_Sort,word);
+        Sort sortObj = new Sort(WIP_Sort, Sort_Out, word);
         
         input.start();
-        cs.start();
+        wip.start();
         sortObj.start();
 
         try {
@@ -27,7 +27,7 @@ public class App {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
+ 
 
     }
     }
