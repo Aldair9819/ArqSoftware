@@ -5,8 +5,8 @@ import java.util.HashMap;
 
 public class Sort extends Thread {
     private Tube entrada, salida; 
-    HashMap<String, ArrayList<String>> palabras = new HashMap<String, ArrayList<String>>();
-    ArrayList<String> initialWords;
+    private HashMap<String, ArrayList<String>> wordLocation = new HashMap<String, ArrayList<String>>();
+    private ArrayList<String> initialWords;
     
     public Sort(Tube entrada, Tube salida, ArrayList<String> initialWords) {
         this.entrada = entrada;
@@ -15,29 +15,28 @@ public class Sort extends Thread {
         
     }
     public void run() {
-        ArrayList<String> sortedList = SortMethod(initialWords);
+        ArrayList<String> sortedList = this.sortMethod(initialWords);
         for(String word:sortedList){
-            palabras.put(word, new ArrayList<String>());
+            wordLocation.put(word, new ArrayList<String>());
         }
 
         while (entrada.isConexion() || entrada.isInformacion()) {
             if (entrada.isInformacion()) {
                 String linea = entrada.getInformacion();
                 String[] lineaSplit = linea.split("=");
-                if(palabras.containsKey(lineaSplit[0])){
-                    palabras.get(lineaSplit[0]).add(lineaSplit[1]);
+                if(wordLocation.containsKey(lineaSplit[0])){
+                    wordLocation.get(lineaSplit[0]).add(lineaSplit[1]);
                 }
             }
         }
-
-        for (String key : palabras.keySet()) {
-            salida.addInformacion(key+"->"+palabras.get(key));
+        
+        for(String word:sortedList){
+            salida.addInformacion(word + "->" + wordLocation.get(word) );
         }
-
     }
 
 
-    private static ArrayList<String> SortMethod(ArrayList<String> lista){
+    private ArrayList<String> sortMethod(ArrayList<String> lista){
         ArrayList<String> sortedList = new ArrayList<String>();
         for(String word:lista){
             boolean notAdded = true;
