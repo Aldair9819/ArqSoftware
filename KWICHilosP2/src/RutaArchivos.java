@@ -1,13 +1,14 @@
-package ProyectoKWICH;
+
+
 import java.io.File;
 import java.util.ArrayList;
 
-public class RutaTXT {
+public class RutaArchivos {
     private static String RutaLinux = System.getProperty("user.dir")+"/src/";
     private static String RutaWindows = System.getProperty("user.dir")+"\\src\\";
 
 
-    private static ArrayList<String> obtenerArchivosTXT(String rutaCarpeta) {
+    private static ArrayList<String> obtenerArchivos(String rutaCarpeta, String extension) {
 
         String nombreRemover = "salida";
 
@@ -27,7 +28,7 @@ public class RutaTXT {
 
         // Verificar cada archivo
         for (File archivo : archivos) {
-            if(archivo.getName().toLowerCase().endsWith(".txt"))
+            if(archivo.getName().toLowerCase().endsWith("."+extension.toLowerCase()))
                 archivosTxtList.add(archivo.getName());
             
         }
@@ -43,11 +44,11 @@ public class RutaTXT {
     }
 
     
-    public static String rutaEntrada(){
+    public static String rutaEntrada(String extension){
 
         ArrayList<String> nombreArchivosTexto = new ArrayList<String>();
 
-        nombreArchivosTexto = obtenerArchivosTXT(Path());
+        nombreArchivosTexto = obtenerArchivos(Path(), extension);
         
         String opcion = "";
         if(nombreArchivosTexto.size()==0){
@@ -64,10 +65,11 @@ public class RutaTXT {
             System.out.print("Opcion:");
             try{
                 opcion = System.console().readLine();
-                if(!opcion.contains(".txt")){
-                    opcion += ".txt";
+                if(!opcion.contains("."+extension.toLowerCase())){
+                    opcion += "."+extension.toLowerCase();
                 }
                 if(nombreArchivosTexto.contains(opcion)){
+                    System.out.println();
                     return Path()+opcion;
                 }else{
                     System.out.println("Opcion invalida\n");
@@ -77,6 +79,7 @@ public class RutaTXT {
                 System.out.println("Opcion invalida");
             }
         }
+        
 
     }
 

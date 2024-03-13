@@ -1,5 +1,5 @@
+package Viejos;
 import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
 
@@ -8,8 +8,8 @@ import org.apache.pdfbox.multipdf.Splitter;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.text.PDFTextStripper;
 
-public class Ap2 {
-
+public class OldLector {
+    
     public static void main(String[] args) {
         try {
             // Ruta del archivo PDF que deseas leer
@@ -51,7 +51,7 @@ public class Ap2 {
             e.printStackTrace();
         }
     }
-
+    /* 
     private static void guardarTextoEnArchivo(String texto, String nombreArchivo) {
         try {
             FileWriter writer = new FileWriter(nombreArchivo);
@@ -62,5 +62,5 @@ public class Ap2 {
             e.printStackTrace();
         }
     }
-
+*/
 }
