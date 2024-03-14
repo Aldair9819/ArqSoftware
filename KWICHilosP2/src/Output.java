@@ -4,15 +4,12 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class Output {
-    private static String ruta;
 
-    public static void salidaEnArchivo(Tube entrada, String rutaSalida){
-        ruta = rutaSalida;
-
+    public static void writeInFile(Tube in, String routeOutput){
          try {
-            BufferedWriter writer = new BufferedWriter(new FileWriter(ruta));
-            while(entrada.isInformacion()){
-                writer.write(entrada.getInformacion());
+            BufferedWriter writer = new BufferedWriter(new FileWriter(routeOutput));
+            while(in.isInformation()){
+                writer.write(in.getInformation());
                 writer.newLine();
             }
             writer.close();
@@ -21,5 +18,6 @@ public class Output {
             System.err.println("Error al escribir el ArrayList en el archivo: " + e.getMessage());
         }
     }
+
 
 }

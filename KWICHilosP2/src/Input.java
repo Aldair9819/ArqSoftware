@@ -13,67 +13,67 @@ import org.apache.pdfbox.text.PDFTextStripper;
 
 public class Input extends Thread {
     
-    private Tube salida;
-    private String ruta;
+    private Tube out;
+    private String route;
     
-    public Input( String ruta, Tube salida) {
-        this.salida = salida;       
-        this.ruta = ruta;
+    public Input( String route, Tube out) {
+        this.out = out;       
+        this.route = route;
     }
 
     @Override
     public void run() {
         try {
-            // Ruta del archivo PDF que deseas leer
-            String rutaPDF = ruta;
+            // route del file PDF que deseas leer
+            String routePDF = route;
 
-            // Crear un objeto File con la ruta del archivo PDF
-            File archivoPDF = new File(rutaPDF);
+            // Crear un objeto File con la route del file PDF
+            File filePDF = new File(routePDF);
 
-            // Verificar si el archivo PDF existe
-            if (!archivoPDF.exists()) {
-                System.err.println("El archivo PDF no existe.");
+            // Verificar si el file PDF existe
+            if (!filePDF.exists()) {
+                System.err.println("PDF no existe.");
                 return;
             }
 
             
-            // Crear un objeto PDDocument para representar el documento PDF
-            PDDocument documentoPDF = Loader.loadPDF(archivoPDF);
+            // Crear un objeto PDDocument para representar el document PDF
+            PDDocument documentPDF = Loader.loadPDF(filePDF);
             Splitter splitter = new Splitter();
 
-            List<PDDocument> documentosPDF = splitter.split(documentoPDF);
+            List<PDDocument> pagePDF = splitter.split(documentPDF);
             PDFTextStripper pdfTextStripper = new PDFTextStripper();
 
-            for(PDDocument doc : documentosPDF){
-                String texto = pdfTextStripper.getText(doc);
-                salida.addInformacion(texto);
+            for(PDDocument doc : pagePDF){
+                String text = pdfTextStripper.getText(doc);
+                out.addInformation(text);
             }
            
-            documentoPDF.close();
+            documentPDF.close();
 
         } catch (IOException e) {
             e.printStackTrace();
         }
-        salida.setConexion(false);
+        out.setConnection(false);
        
 
        
 
     }
 
-    public static ArrayList<String> obtenerPalabras(String Ruta){
-        ArrayList<String> palabras = new ArrayList<String>();
-        try(BufferedReader bf = new BufferedReader(new FileReader(Ruta))){
+    public static ArrayList<String> getWord(String route){
+        ArrayList<String> word = new ArrayList<String>();
+        try(BufferedReader bf = new BufferedReader(new FileReader(route))){
             String s;
             while((s = bf.readLine())!=null) {
                 if(!s.replace(" ", "").equals(""))
-                palabras.add(s);
+                word.add(s);
             }
         }
         catch(IOException ex) {
             ex.printStackTrace();
         }
-        return palabras;
+        return word;
     }
     
 

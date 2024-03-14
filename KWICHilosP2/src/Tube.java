@@ -2,29 +2,29 @@
 import java.util.ArrayList;
 
 public class Tube {
-    private ArrayList<String> informacion = new ArrayList<String>();
-    private boolean conexion = true;
+    private ArrayList<String> information = new ArrayList<String>();
+    private boolean connection = true;
 
-    public synchronized String getInformacion() {
-        String informacion = this.informacion.get(0);
-        this.informacion.remove(0);
-        return informacion;
+    public synchronized String getInformation() {
+        String line_info = this.information.get(0);
+        this.information.remove(0);
+        return line_info;
     }
 
-    public synchronized void addInformacion(String informacion) {
-        this.informacion.add(informacion);
+    public synchronized void addInformation(String informacion) {
+        this.information.add(informacion);
     }
 
-    public synchronized boolean isConexion() {
-        return conexion;
+    public synchronized boolean isConnection() {
+        return connection;
     }
 
-    public synchronized void setConexion(boolean conexion) {
-        this.conexion = conexion;
+    public synchronized void setConnection(boolean connection) {
+        this.connection = connection;
     }
 
-    public synchronized boolean isInformacion(){
-        return !informacion.isEmpty();
+    public synchronized boolean isInformation(){
+        return !information.isEmpty();
     }
 
 

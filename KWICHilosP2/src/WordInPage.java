@@ -1,14 +1,14 @@
 import java.util.ArrayList;
 
 public class WordInPage extends Thread {
-    private Tube entrada; 
-    private Tube salida;
+    private Tube in; 
+    private Tube out;
     private ArrayList<String> words = new ArrayList<String>();
     private ArrayList<String> initialWords;
 
-    public WordInPage(Tube entrada, Tube salida, ArrayList<String> initialWords) {
-        this.entrada = entrada;
-        this.salida = salida;
+    public WordInPage(Tube in, Tube out, ArrayList<String> initialWords) {
+        this.in = in;
+        this.out = out;
         this.initialWords = initialWords;
     }
 
@@ -17,20 +17,20 @@ public class WordInPage extends Thread {
         for(String word:initialWords){
             words.add(word);
         }
-        int pagina = 0;
-        while (entrada.isConexion() || entrada.isInformacion()) {
-            if (entrada.isInformacion()) {
-                pagina++;
-                String linea = entrada.getInformacion();
+        int numberPage = 0;
+        while (in.isConnection() || in.isInformation()) {
+            if (in.isInformation()) {
+                numberPage++;
+                String line = in.getInformation();
                 for(String word: words){
-                    if (linea.toLowerCase().contains(word.toLowerCase())) {
-                        salida.addInformacion(word + "=" + pagina);
+                    if (line.toLowerCase().contains(word.toLowerCase())) {
+                        out.addInformation(word + "|" + numberPage);
                     }
                 }
             }
         }
         
-        salida.setConexion(false);
+        out.setConnection(false);
 
        
 
