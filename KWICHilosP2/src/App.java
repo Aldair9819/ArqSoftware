@@ -14,7 +14,7 @@ public class App {
 
         Input input = new Input(routePDF,Input_WIP);
         WordInPage wip = new WordInPage(Input_WIP, WIP_Sort,word);
-        Sort sortObj = new Sort(WIP_Sort, Sort_Out, word);
+        Sort sortObj = new Sort(WIP_Sort, Sort_Out);
         
         input.start();
         wip.start();
