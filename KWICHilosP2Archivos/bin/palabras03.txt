@@ -1,0 +1,8 @@
+principe
+principito
+oveja
+leon
+serpiente
+cordero
+viaje
+amigo

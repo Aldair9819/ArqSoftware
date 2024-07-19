@@ -1,0 +1,7 @@
+Serpiente
+Viaje
+Insecto
+Animal
+Busqueda
+niño
+amigo
