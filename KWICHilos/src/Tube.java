@@ -9,12 +9,9 @@ public class Tube {
         this.informacion.remove(0);
         return informacion;
     }
-    
+
     public synchronized void addInformacion(String informacion) {
         this.informacion.add(informacion);
-    }
-    public synchronized void addInformacion(ArrayList<String> informacion) {
-        this.informacion = informacion;
     }
 
     public synchronized boolean isConexion() {
@@ -28,5 +25,7 @@ public class Tube {
     public synchronized boolean isInformacion(){
         return !informacion.isEmpty();
     }
+
+
     
 }

@@ -1,29 +1,24 @@
 import java.io.BufferedWriter;
 import java.io.FileWriter;
-public class Output extends Thread{
+import java.io.IOException;
 
-    private String ruta ;
-    private Tube entrada;
+public class Output {
+    private static String ruta;
 
-    public Output(Tube entrada, String ruta){
-        this.entrada = entrada;
-        this.ruta = ruta;
+    public static void salidaEnArchivo(Tube entrada, String rutaSalida){
+        ruta = rutaSalida;
 
-    }
-    public void run() {
-        try {
+         try {
             BufferedWriter writer = new BufferedWriter(new FileWriter(ruta));
-            while (entrada.isConexion() || entrada.isInformacion()) {
-                if (entrada.isInformacion()) {
-                    String info = entrada.getInformacion();
-                    writer.write(info);
-                    writer.newLine(); // Agrega una nueva línea después de cada elemento
-                }
+            while(entrada.isInformacion()){
+                writer.write(entrada.getInformacion());
+                writer.newLine();
             }
             writer.close();
             System.out.println("El ArrayList se ha escrito correctamente en el archivo.");
-        } catch (Exception e) {
+        } catch (IOException e) {
             System.err.println("Error al escribir el ArrayList en el archivo: " + e.getMessage());
         }
     }
+
 }

@@ -1,0 +1,102 @@
+Release Notes -- Apache PDFBox -- Version 3.0.1
+
+Introduction
+------------
+
+The Apache PDFBox library is an open source Java tool for working with PDF documents.
+
+This is an incremental bugfix release based on the earlier 3.0.0 release. It contains
+a couple of fixes and small improvements.
+
+A migration guide is available at https://pdfbox.apache.org/3.0/migration.html. It is
+still a work in progress and we are happy to include any valuable feedback from our 
+community. 
+
+For more details on these changes and all the other fixes and improvements
+included in this release, please refer to the following issues on the
+PDFBox issue tracker at https://issues.apache.org/jira/browse/PDFBOX.
+
+Sub-task
+
+[PDFBOX-5663] - Implement "about" dialog
+
+Bug
+
+[PDFBOX-5350] - Regression unicode mapping in Korean document
+[PDFBOX-5649] - NPE in DomXmpParser.parseLiDescription
+[PDFBOX-5654] - Avoid NPE when processing CFF2 based fonts
+[PDFBOX-5658] - IllegalArgumentException: Dimensions (width=458477041 height=26) are too large
+[PDFBOX-5662] - Can not see checkbox check
+[PDFBOX-5665] - NPE when converting pdf to image.
+[PDFBOX-5666] - error encountered in splitting pdf using ver 3.0.0
+[PDFBOX-5668] - NullPointerException in XMPMetadata.getSchema()
+[PDFBOX-5672] - PDFToImage might not correctly detect unsupported image formats
+[PDFBOX-5673] - Refactor Stream operations and operations on collections
+[PDFBOX-5681] - ConcurrentModificationException in getObjectsByType() in 3.x
+[PDFBOX-5682] - Long/permanent hang in PDFBox 3.x
+[PDFBOX-5684] - Font cache isn't effective on my machine, always rebuilds
+[PDFBOX-5687] - PDFBox 3.0 OSGi bundle requires sun.java2d.cmm.kcms package
+[PDFBOX-5689] - Many new warnings "newGlyph ... newValue: ... is trying to override the oldValue" after upgrade to V3.0.0
+[PDFBOX-5694] - PDF to Image conversion results in different converted image
+[PDFBOX-5696] - COSStream lost, becomes a COSDictionary
+[PDFBOX-5702] - Text in a certain font is lost when converting pdf to image
+[PDFBOX-5706] - Incorrect colors in image from PDFs (DCTDecode)
+[PDFBOX-5707] - Avoid NPE when accessing the elements of a COSArray
+[PDFBOX-5712] - Stackoverflow in split
+[PDFBOX-5713] - PfbParser fails to parse PFB font with multiple binary records.
+[PDFBOX-5718] - java.lang.IllegalArgumentException: Provided dictionary is not of type 'COSName{OCG}'
+
+New Feature
+
+[PDFBOX-5670] - Allow repeatable subcommands in the command line tools
+[PDFBOX-5683] - Inconsistent/incomplete PDF rendering
+
+Improvement
+
+[PDFBOX-4892] - Improve code quality (4)
+[PDFBOX-5664] - 3.0.0: PDFCloneUtility needs a protected constructor to be useable outside of PDFBox when using Java 9 JPMS
+[PDFBOX-5685] - Reduce number of copies to lower memory footprint
+[PDFBOX-5693] - Consolidate bouncycastle configuration
+[PDFBOX-5699] - Consistent scm.url values for pom.xml
+[PDFBOX-5703] - use comparison operators for enums
+[PDFBOX-5705] - update log4j dependency to 2.21.0
+[PDFBOX-5711] - Loader: add support for java.nio.file.Path
+
+Test
+
+[PDFBOX-5667] - Can't create test for ExtractText command line tool
+
+Release Contents
+----------------
+
+This release consists of a single source archive packaged as a zip file.
+The archive can be unpacked with the jar tool from your JDK installation.
+See the README.txt file for instructions on how to build this release.
+
+The source archive is accompanied by SHA512 checksums and a PGP signature
+that you can use to verify the authenticity of your download.
+The public key used for the PGP signature can be found at
+https://www.apache.org/dist/pdfbox/KEYS.
+
+About Apache PDFBox
+-------------------
+
+Apache PDFBox is an open source Java library for working with PDF documents.
+This project allows creation of new PDF documents, manipulation of existing
+documents and the ability to extract content from documents. Apache PDFBox
+also includes several command line utilities. Apache PDFBox is published
+under the Apache License, Version 2.0.
+
+For more information, visit https://pdfbox.apache.org/
+
+About The Apache Software Foundation
+------------------------------------
+
+Established in 1999, The Apache Software Foundation provides organizational,
+legal, and financial support for more than 100 freely-available,
+collaboratively-developed Open Source projects. The pragmatic Apache License
+enables individual and commercial users to easily deploy Apache software;
+the Foundation's intellectual property framework limits the legal exposure
+of its 2,500+ contributors.
+
+For more information, visit https://www.apache.org/
